@@ -1,37 +1,37 @@
 import streamlit as st
-st.title("Il mio generatore di relazioni di Chimica! 🧪")
 
-import streamlit as st
+st.set_page_config(page_title="AI Relazioni Chimica", page_icon="🤖")
 
-# Titolo del sito
-st.title("🧪 Relazioni di Chimica PRO")
-st.write("Compila i campi qui sotto per creare la tua relazione perfetta.")
+st.title("🤖 Generatore AI per Relazioni di Chimica")
+st.write("Scrivi i tuoi appunti grezzi. L'AI li trasformerà in una relazione da massimo dei voti seguendo la griglia del prof!")
 
-# --- SEZIONE DOMANDE ---
-# Qui chiediamo all'utente di scrivere le cose
-titolo_esp = st.text_input("Titolo dell'esperimento")
-scopo_esp = st.text_area("Scopo dell'esperimento (cosa vogliamo dimostrare?)")
+# --- 1. SCOPO E DOMANDA ---
+st.header("1. Scopo e Domanda Investigabile")
+appunti_scopo = st.text_area("Cosa volevate scoprire? Qual era la domanda iniziale?", 
+                             placeholder="Es. Volevamo vedere se l'acqua bolle prima col sale. Domanda: Il sale altera il punto di ebollizione?")
 
-st.warning("Ricordati di mettere portata e sensibilità degli strumenti!")
-strumenti = st.text_area("Strumenti usati")
+# --- 2. CAMPIONI E MATERIALI (Qui si fanno i punti grossi!) ---
+st.header("2. Campioni, Materiali e Strumenti")
+st.warning("Ricorda: Il prof dà 9 punti sui campioni! Spiega a cosa servivano.")
+appunti_campioni = st.text_area("Che campioni e reagenti avete usato? A cosa servivano? Cosa ti aspettavi succedesse?", 
+                                placeholder="Es. Acqua di rubinetto (solvente). Sale grosso (soluto). Mi aspettavo che sciogliendosi alzasse la temperatura.")
+appunti_strumenti = st.text_area("Strumenti usati (con portata/sensibilità) e materiali di consumo", 
+                                 placeholder="Es. Becher da 250ml, termometro sensibilità 1°C, piastra riscaldante.")
 
-procedimento = st.text_area("Procedimento (scrivi a punti)")
+# --- 3. PROCEDIMENTO E DATI ---
+st.header("3. Procedimento e Dati")
+appunti_procedimento = st.text_area("Cosa avete fatto fisicamente? (Scrivilo in modo grezzo)", 
+                                    placeholder="Es. Abbiamo messo 100ml di acqua nel becher, acceso la piastra e aspettato. Poi abbiamo buttato 10g di sale...")
+appunti_dati = st.text_area("Che dati avete raccolto? Che calcoli hai fatto?", 
+                            placeholder="Es. L'acqua bolliva a 102°C.")
 
-# --- BOTTONE PER GENERARE ---
-# Se l'utente preme il bottone...
-if st.button("Genera Relazione"):
-    
-    st.divider() # Fa una linea di separazione
-    st.success("Ecco la tua relazione pronta da stampare! (Premi Ctrl+P)")
-    
-    # Qui il sito "stampa" a schermo quello che l'utente ha scritto prima
-    st.header(titolo_esp)
-    
-    st.subheader("1. Scopo")
-    st.write(scopo_esp)
-    
-    st.subheader("2. Strumenti")
-    st.write(strumenti)
-    
-    st.subheader("3. Procedimento")
-    st.write(procedimento)
+# --- 4. CONCLUSIONI ---
+st.header("4. Conclusioni (Valgono 6 punti!)")
+appunti_conclusioni = st.text_area("L'esperimento ha risposto alla domanda? Che problemi ci sono stati? Come lo miglioreresti?", 
+                                   placeholder="Es. Sì, il sale alza la temperatura. Però abbiamo disperso calore, la prossima volta userei un coperchio.")
+
+# --- BOTTONE ---
+if st.button("✨ Fai la Magia (Genera con AI)"):
+    st.info("Questa funzione si collegherà a breve all'Intelligenza Artificiale!")
+    # Per ora stampiamo solo a schermo per vedere se le caselle funzionano
+    st.write("I tuoi appunti sono stati salvati. Stiamo preparando l'integrazione con l'AI!")
